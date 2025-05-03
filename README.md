@@ -1,90 +1,139 @@
-# Docker, Kubernetes & Testcontainers Demo
+# 🚀 docker-k8s-testcontainers-demo
 
-This demo showcases the integration of **Docker**, **Kubernetes**, and **Testcontainers** to deploy and test services like NGINX, Redis, and MongoDB with real-time logs and container interactions.
+A live, hands-on demo that brings together **Kubernetes**, **Docker**, and **Testcontainers** to showcase how integration testing and deployment automation can be interactive, powerful, and developer-friendly.
 
-## Project Setup
+> ✅ Build. 🚀 Deploy. 🧪 Test. All from a browser — powered by containers.
 
-This project demonstrates deploying pods on Kubernetes, running containerized tests with Testcontainers, and fetching logs dynamically for a more interactive demo experience.
+---
 
-### 🖼️ Demo UI Screenshot
+## 📌 What This Project Demonstrates
+
+- 🔧 Deploying Kubernetes Pods dynamically using YAML manifests
+- 🧪 Running integration tests using [Testcontainers](https://testcontainers.com/) for:
+  - **NGINX**
+  - **Redis**
+  - **MongoDB** (with authentication)
+- 🌐 Clean frontend UI to interact with deployments and see detailed test logs
+- 🐳 Uses Docker Desktop and Testcontainers Desktop under the hood
+
+---
+
+## 🗂️ Project Structure
+
+```
+docker-k8s-testcontainers-demo/
+├── backend/
+│   ├── main.py                  # FastAPI backend
+│   ├── test_nginx.py            # NGINX test using Testcontainers
+│   ├── test_redis.py            # Redis test using Testcontainers
+│   ├── test_mongodb.py          # MongoDB test with auth using Testcontainers
+│   └── nginx-pod.yaml           # Sample Kubernetes pod YAML
+│   └── redis-pod.yaml
+│   └── mongodb-pod.yaml
+│   └── Dockerfile
+├── frontend/
+│   └── index.html               # Interactive UI to control deployments and run tests
+│   └── Dockerfile
+├── docker-compose.yml
+├── README.md
+```
+
+---
+
+## ⚙️ Prerequisites
+
+- ✅ Docker Desktop (with Kubernetes enabled)
+- ✅ Python 3.10+
+- ✅ Testcontainers Desktop ([Download](https://testcontainers.com/desktop/))
+- ✅ `kubectl` CLI configured and working
+- ✅ `pip install -r requirements.txt` (Install FastAPI, requests, pymongo, testcontainers, etc.)
+
+---
+
+## 🚀 How to Run the Project
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/docker-k8s-testcontainers-demo.git
+cd docker-k8s-testcontainers-demo
+```
+
+### 2. Start the App with Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+This will:
+- Launch the **FastAPI** backend on `localhost:5000`
+- Serve the frontend on `localhost:8080`
+
+---
+
+## 🌐 Access the Demo UI
+
+Open your browser and go to:
+
+```
+http://localhost:8080
+```
+
+You can now:
+- ✅ Select a deployment (NGINX, Redis, MongoDB)
+- 🚀 Deploy or delete the pod using Kubernetes
+- 📊 Check pod status
+- 🧪 Run integration tests using Testcontainers (and view live logs!)
+
+---
+
+## 📸 Example UI (Screenshot Placeholder)
 
 <p align="center">
   <img src="assets/docker-k8s-testcontainers-demo-frontend.jpg" alt="Demo UI Screenshot" width="600"/>
 </p>
 
-## Features
+---
 
-- **Deploy NGINX, Redis, and MongoDB** pods on Kubernetes.
-- **Run tests** with Testcontainers for Redis, MongoDB, and NGINX.
-- **Interactive frontend** to view test results, pod status, and deploy/delete actions.
+## 🧪 Sample Test Output
 
-### 🛠️ Technologies Used
-
-- **Docker**
-- **Kubernetes**
-- **Testcontainers**
-- **FastAPI** (Backend)
-- **HTML/JavaScript** (Frontend)
-
-## Running the Project Locally
-
-### Prerequisites
-
-1. **Docker Desktop** installed and running (with Kubernetes enabled).
-2. **Python 3.12** or above.
-3. **kubectl** configured to work with your local Kubernetes cluster.
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/vellankikoti/docker-k8s-testcontainers-demo.git
-cd docker-k8s-testcontainers-demo
 ```
-
-### 2. Install Dependencies
-
-#### Backend (Python)
-```bash
-cd backend
-pip install -r requirements.txt
+🧪 Test Output for Redis:
+🔧 Starting Redis Test using Testcontainers...
+🚀 Redis container started.
+🌐 Attempting to connect to Redis at redis://172.17.0.2:6379
+✅ Redis is working fine, test passed!
+📦 Container stopped and removed.
 ```
-
-#### Frontend
-The frontend is a static HTML file, so no installation is needed.
-
-### 3. Start Docker and Kubernetes
-
-Make sure Docker and Kubernetes are running on your machine. Test with:
-
-```bash
-kubectl get pods
-```
-
-### 4. Run the Application
-
-1. **Start Backend**:
-   ```bash
-   uvicorn main:app --reload
-   ```
-
-2. **Start Frontend**:
-   Open the `index.html` in a browser, or use a local HTTP server to serve it (e.g., `python3 -m http.server`).
-
-### 5. Use the Demo
-
-- Select a deployment (NGINX, Redis, MongoDB) from the dropdown.
-- Click on **Deploy**, **Delete**, **Status**, or **Run Test** to interact with the Kubernetes cluster and Testcontainers.
-- View the test outputs and pod statuses directly in the frontend.
 
 ---
 
-### 🚀 Deployment and Test Logs
+## 🛠️ Tips & Notes
 
-Test logs from Redis, MongoDB, and NGINX will appear dynamically as you trigger tests and actions through the interface.
+- Make sure your Docker Desktop is running.
+- Testcontainers Desktop should be logged in (required for stable container networking).
+- MongoDB test uses a secured instance (`testuser/testpass`) — ensure it's reflected in both your test and URI.
 
 ---
 
-## License
+## 🙌 Acknowledgements
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Testcontainers Python](https://pypi.org/project/testcontainers/)
+- [Docker](https://www.docker.com/)
+- [Kubernetes](https://kubernetes.io/)
+
+---
+
+## 📄 License
+
+MIT © 2025
+
+---
+
+## ❤️ Like this demo?
+
+Feel free to ⭐ star the repo and share your feedback!
 ```
+
+---
