@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>K8s & Testcontainers Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { margin: 5px; padding: 10px 15px; }
+    select { margin-left: 10px; }
+    pre { background: #f4f4f4; padding: 10px; border-radius: 5px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Kubernetes & Testcontainers Demo</h1>
+
+  <label for="deployment">Select Deployment:</label>
+  <select id="deployment">
+    <option value="nginx">NGINX</option>
+    <option value="redis">Redis</option>
+    <option value="mongodb">MongoDB</option>
+  </select>
+
+  <br /><br />
+
+  <button onclick="sendAction('deploy')">🚀 Deploy</button>
+  <button onclick="sendAction('delete')">🗑️ Delete</button>
+  <button onclick="sendAction('status')">📊 Get Status</button>
+  <button onclick="sendAction('test')">🧪 Run Test</button>
+
+  <h3>🔍 Output:</h3>
+  <pre id="output">Click a button to see output here...</pre>
+
+  <script>
+    async function sendAction(action) {
+      const deployment = document.getElementById("deployment").value;
+
+      const body = (action === "status") ? { action } : { action, deployment };
+
+      const response = await fetch("http://localhost:5000/action", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
+      const data = await response.json();
+      document.getElementById("output").textContent = data.response;
+    }
+  </script>
+</body>
+</html>
