@@ -134,6 +134,5 @@ MIT © 2025
 ## ❤️ Like this demo?
 
 Feel free to ⭐ star the repo and share your feedback!
-```
 
 ---
