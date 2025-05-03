@@ -55,7 +55,7 @@ docker-k8s-testcontainers-demo/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/docker-k8s-testcontainers-demo.git
+git clone https://github.com/vellankikoti/docker-k8s-testcontainers-demo.git
 cd docker-k8s-testcontainers-demo
 ```
 
